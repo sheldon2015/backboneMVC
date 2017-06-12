@@ -1,0 +1,22 @@
+.sidebar {
+    .active {
+        background: lightcyan;
+    }
+    a {
+        line-height: 40px;
+        padding-left: 15px;
+    }
+}
+
+#sub-sidebar {
+    a {
+        line-height: 30px;
+    }
+}
+
+#header,
+#footer {
+    margin:0 0 20px 0;
+    height: 100px;
+    background: lightcyan;
+}
