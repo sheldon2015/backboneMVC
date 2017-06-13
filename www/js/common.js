@@ -17,6 +17,7 @@ requirejs.config({
         },
         underscore: {
             exports: '_'
-        }
+        },
+        'bootstrap.min':['jquery']
     }
 });

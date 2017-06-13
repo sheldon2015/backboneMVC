@@ -2,7 +2,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Router = Backbone.Router.extend({
 		routes: {
-			"summary(/:id)": "summary",
+			"summary(/:id)": "goods",
 			"goods(/:id)": "goods",
 			"*actions": "default"
 		}
@@ -11,26 +11,23 @@ define(function(require) {
 	var router = new Router();
 	router.on("route", function(url, args) {
 		console.log("-----router-----", url, args);
-		router.currentCtl &&
-			_.each(router.currentCtl, function(item) {
-				item.remove();
-			});
+
 		switch (url) {
 			case "goods":
-				require([
-					"app/controller/sidebarCtl",
-					"app/controller/addGoodsCtl"
-				], function(sidebarCtl, addGoodsCtl) {
-					sidebarCtl();
+				require(["app/controller/addGoodsCtl"], function(addGoodsCtl) {
 					addGoodsCtl();
-					router.currentCtl = [sidebarCtl, addGoodsCtl];
+					router.currentCtl && router.currentCtl.remove();
+
+					router.currentCtl = addGoodsCtl;
 				});
 
 				break;
 			default:
 				require(["app/controller/loginCtl"], function(loginCtl) {
-					router.currentCtl = [loginCtl];
 					loginCtl({ router: router });
+					router.currentCtl && router.currentCtl.remove();
+
+					router.currentCtl = loginCtl;
 				});
 				break;
 		}
