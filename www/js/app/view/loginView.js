@@ -2,7 +2,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var tpl = require("text!app/tpl/loginTpl.html");
 	var LoginView = Backbone.View.extend({
-		el: "#main",
+		id: "login",
 		events: {
 			"submit #login-form": "doSubmit"
 		},
@@ -17,6 +17,7 @@ define(function(require) {
 		},
 		render: function() {
 			this.$el.html(_.template(tpl)());
+			$("#main").html(this.$el);
 		},
 		goTo: function() {
 			this.router.navigate("goods", { trigger: true });

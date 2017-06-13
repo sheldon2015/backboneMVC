@@ -5,27 +5,31 @@ define(function(require) {
 			"summary(/:id)": "summary",
 			"goods(/:id)": "goods",
 			"*actions": "default"
-		},
-		goods: function() {},
-
-		default: function(url, args) {
-			console.log(url, args);
 		}
 	});
 
 	var router = new Router();
-
 	router.on("route", function(url, args) {
 		console.log("-----router-----", url, args);
+		router.currentCtl &&
+			_.each(router.currentCtl, function(item) {
+				item.remove();
+			});
 		switch (url) {
 			case "goods":
-				require(["app/controller/sidebarCtl"], function(sidebarCtl) {
+				require([
+					"app/controller/sidebarCtl",
+					"app/controller/addGoodsCtl"
+				], function(sidebarCtl, addGoodsCtl) {
 					sidebarCtl();
+					addGoodsCtl();
+					router.currentCtl = [sidebarCtl, addGoodsCtl];
 				});
-				break;
 
+				break;
 			default:
 				require(["app/controller/loginCtl"], function(loginCtl) {
+					router.currentCtl = [loginCtl];
 					loginCtl({ router: router });
 				});
 				break;

@@ -8,6 +8,9 @@ define(["app/view/loginView", "app/model/loginModel"], function(
 		});
 		loginView.render();
 		loginView.router = arg.router;
+		controller.remove = function() {
+			loginView.remove();
+		};
 	};
 
 	return controller;
