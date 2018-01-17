@@ -1,14 +1,11 @@
 <ul class='list-unstyled'>
-  <% _.each(items, function(item,index) { %>
-    <li <% if(index==0 ) { %>
-
-      class="active"
-
-      <%}%> >
-        <a href="#<%=item.href%>">
-          <%=item.anchor%>
-        </a>
-    </li>
-    <% })%>
+    <% _.each(items, function(item,index) { %>
+        <li <% if(index==0 ) { %>
+            class="active"
+            <%} %>>
+                <a href="#<%=item.href%>">
+                    <%=item.anchor%>
+                </a>
+        </li>
+        <%})%>
 </ul>
-

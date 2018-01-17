@@ -7,10 +7,8 @@ define(["app/view/addGoodsView", "./sidebarCtl"], function(
 		var addGoodsView = new AddGoodsView();
 		addGoodsView.render();
 		controller.remove = function() {
-			
-				addGoodsView.remove();
-				sidebarCtl.remove();
-			
+			addGoodsView.remove();
+			sidebarCtl.remove();
 		};
 	};
 

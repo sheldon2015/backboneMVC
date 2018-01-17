@@ -2,6 +2,7 @@
     .active {
         background: lightcyan;
     }
+
     a {
         line-height: 40px;
         padding-left: 15px;
@@ -18,9 +19,9 @@
     min-height: 800px;
 }
 
-#header,
-#footer {
-    margin: 0 0 20px 0;
+#footer,
+#header {
+    margin: 0 0 20px;
     height: 100px;
     background: lightcyan;
 }

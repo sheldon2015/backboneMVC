@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
+
     <script src="js/lib/require.js"></script>
     <script>
         //Load common code that includes config, then load the app
         //logic for this page. Do the requirejs calls here instead of
         //a separate file so after a build there are only 2 HTTP
         //requests instead of three.
-        requirejs(['./js/common'], function (common) {
+        require(['./js/common'], function (common) {
             //js/common sets the baseUrl to be js/ so
             //can just ask for 'app/main1' here instead
             //of 'js/app/main1'
-            requirejs(['app/app']);
+            require(['app/app']);
         });
     </script>
 </head>
@@ -37,7 +38,6 @@
                 <!--<div class="col-xs-9  right" id='right'>
                 </div>-->
             </div>
-
         </div>
     </div>
 </body>
